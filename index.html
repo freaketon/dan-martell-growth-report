@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dan Martell Growth Report: Scaling Your Digital Presence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0A1128;
+            --white: #FFFFFF;
+            --off-white: #F8F8F8;
+            --light-gray: #E0E0E0;
+            --dark-gray: #333333;
+            --accent-blue: #2A72B2; /* A slightly brighter blue for accents */
+            --red-urgency: #E74C3C;
+            --orange-urgency: #F39C12;
+            --yellow-urgency: #F1C40F;
+            --text-color: #333333;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--off-white);
+            display: flex;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.8em;
+        }
+
+        h1 { font-size: 2.5em; }
+        h2 { font-size: 2em; }
+        h3 { font-size: 1.6em; }
+        h4 { font-size: 1.3em; }
+
+        p {
+            margin-bottom: 1em;
+            font-size: 1.05em;
+        }
+
+        a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--navy);
+            text-decoration: underline;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 30px 20px;
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .sidebar-logo {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .sidebar-logo img {
+            max-width: 120px;
+            height: auto;
+            filter: invert(1); /* Makes logo white for dark background */
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 40px;
+        }
+
+        .sidebar-nav ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-nav ul li a {
+            color: var(--light-gray);
+            font-size: 1.1em;
+            display: block;
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar-nav ul li a:hover, .sidebar-nav ul li a.active {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .sidebar-nav .section-number {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-right: 10px;
+            opacity: 0.7;
+        }
+
+        .sidebar-nav ul li a.active .section-number {
+             opacity: 1;
+        }
+
+        .live-radar {
+            margin-top: auto; /* Pushes live radar to the bottom */
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .live-radar h4 {
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .radar-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            color: var(--light-gray);
+        }
+
+        .radar-item .urgency-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        .urgency-red { background-color: var(--red-urgency); }
+        .urgency-orange { background-color: var(--orange-urgency); }
+        .urgency-yellow { background-color: var(--yellow-urgency); }
+        .urgency-green { background-color: #2ECC71; } /* For low urgency */
+
+        .algorithm-signals {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .algorithm-signals h4 {
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .signal-item {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            color: var(--light-gray);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .signal-item::before {
+            content: '•';
+            color: var(--accent-blue);
+            margin-right: 8px;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex-grow: 1;
+            padding: 40px 60px;
+            max-width: calc(100% - var(--sidebar-width));
+        }
+
+        section {
+            margin-bottom: 60px;
+            padding-top: 20px; /* For smooth scroll offset */
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .section-header .section-number {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 600;
+            font-size: 2.5em;
+            color: var(--accent-blue);
+            margin-right: 20px;
+            line-height: 1;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            color: var(--navy);
+            font-size: 2.2em;
+        }
+
+        /* General Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5em;
+            background-color: var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        th {
+            background-color: var(--navy);
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--off-white);
+        }
+
+        /* Specific Section Styles */
+        .executive-summary h1 {
+            color: var(--navy);
+            font-size: 3em;
+            margin-bottom: 0.5em;
+            line-height: 1.2;
+        }
+
+        .executive-summary p {
+            font-size: 1.15em;
+            line-height: 1.7;
+            margin-bottom: 1.5em;
+        }
+
+        .key-metrics {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 2em;
+        }
+
+        .metric-card {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 20px 30px;
+            margin: 10px;
+            flex: 1;
+            min-width: 220px;
+            max-width: 30%;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .metric-card h3 {
+            color: var(--accent-blue);
+            font-size: 2.2em;
+            margin-bottom: 5px;
+        }
+
+        .metric-card p {
+            font-size: 1em;
+            color: var(--dark-gray);
+            margin: 0;
+        }
+
+        .strategic-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 2em;
+        }
+
+        .pillar-card {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .pillar-card h4 {
+            color: var(--navy);
+            margin-bottom: 10px;
+            font-size: 1.25em;
+        }
+
+        .pillar-card p {
+            font-size: 0.95em;
+            color: var(--dark-gray);
+        }
+
+        .persona-card {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .persona-card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .persona-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .persona-card ul li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .persona-card ul li strong {
+            min-width: 80px;
+            display: inline-block;
+            color: var(--navy);
+        }
+
+        .persona-card ul li span {
+            flex-grow: 1;
+        }
+
+        .audience-sizing-table th:nth-child(2),
+        .audience-sizing-table td:nth-child(2) {
+            text-align: center;
+        }
+
+        .platform-audit-note {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: #664d03;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .gaps-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .gap-item {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .gap-item h4 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: var(--navy);
+        }
+
+        .gap-item .urgency-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            font-weight: 600;
+            color: var(--white);
+            margin-left: 15px;
+        }
+
+        .urgency-tag.red { background-color: var(--red-urgency); }
+        .urgency-tag.orange { background-color: var(--orange-urgency); }
+        .urgency-tag.yellow { background-color: var(--yellow-urgency); }
+
+        .gap-item p strong {
+            color: var(--accent-blue);
+        }
+
+        .content-pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 2em;
+        }
+
+        .pillar-item {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .pillar-item h4 {
+            color: var(--navy);
+            margin-bottom: 10px;
+            font-size: 1.25em;
+        }
+
+        .pillar-item p {
+            font-size: 0.95em;
+            color: var(--dark-gray);
+        }
+
+        .calendar-table th, .calendar-table td {
+            text-align: center;
+            vertical-align: top;
+            min-width: 120px;
+        }
+
+        .calendar-table th:first-child, .calendar-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+            background-color: var(--off-white);
+        }
+
+        .content-mix-recommendations ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-mix-recommendations ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .content-mix-recommendations ul li::before {
+            content: '→';
+            color: var(--accent-blue);
+            margin-right: 10px;
+            font-weight: 600;
+        }
+
+        .roadmap-phases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 2em;
+        }
+
+        .phase-card {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .phase-card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            font-size: 1.6em;
+        }
+
+        .phase-card h4 {
+            color: var(--navy);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .phase-card ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        .phase-card ul li {
+            margin-bottom: 5px;
+        }
+
+        .trend-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .trend-item {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .trend-item h4 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: var(--navy);
+        }
+
+        .trend-item .urgency-tag {
+            margin-left: 15px;
+        }
+
+        .trend-item .action-items ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .newsjacking-opportunities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 2em;
+        }
+
+        .news-card {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card h4 {
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .news-card p {
+            flex-grow: 1;
+            margin-bottom: 15px;
+            font-style: italic;
+            color: var(--dark-gray);
+        }
+
+        .news-card .copy-button {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .news-card .copy-button:hover {
+            background-color: var(--navy);
+        }
+
+        /* Hook Creator */
+        .hook-creator-container {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .hook-creator-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: flex-end;
+        }
+
+        .hook-creator-controls div {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .hook-creator-controls label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .hook-creator-controls select,
+        .hook-creator-controls button {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 5px;
+            border: 1px solid var(--light-gray);
+            font-size: 1em;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .hook-creator-controls select {
+            background-color: var(--off-white);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%230A1128%22%20d%3D%22M287%2C114.7L146.2%2C255.5L5.4%2C114.7c-7.5-7.5-7.5-19.8%2C0-27.3s19.8-7.5%2C27.3%2C0l113.5%2C113.5l113.5-113.5c7.5-7.5%2C19.8-7.5%2C27.3%2C0S294.5%2C107.2%2C287%2C114.7z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 1em;
+        }
+
+        .hook-creator-controls button {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            border: none;
+        }
+
+        .hook-creator-controls button:hover {
+            background-color: var(--navy);
+        }
+
+        #generatedHookDisplay {
+            background-color: var(--off-white);
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            padding: 20px;
+            min-height: 80px;
+            font-size: 1.1em;
+            color: var(--dark-gray);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        #generatedHookDisplay span {
+            flex-grow: 1;
+        }
+
+        #generatedHookDisplay .copy-button {
+            margin-left: 15px;
+            padding: 8px 12px;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+
+        .hook-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .grid-hook-item {
+            background-color: var(--off-white);
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 0.95em;
+            color: var(--dark-gray);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .grid-hook-item .copy-button {
+            margin-left: 15px;
+            padding: 6px 10px;
+            font-size: 0.8em;
+            white-space: nowrap;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .main-content {
+                padding: 30px 40px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 250px;
+            }
+            .main-content {
+                margin-left: 250px;
+                padding: 30px;
+            }
+            .executive-summary h1 {
+                font-size: 2.5em;
+            }
+            .section-header h2 {
+                font-size: 1.8em;
+            }
+            .metric-card {
+                max-width: 45%;
+            }
+            .roadmap-phases, .newsjacking-opportunities, .hook-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 20px;
+            }
+            .sidebar-logo {
+                text-align: left;
+                margin-bottom: 20px;
+            }
+            .sidebar-nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+            .sidebar-nav ul li {
+                margin-bottom: 0;
+            }
+            .sidebar-nav ul li a {
+                padding: 6px 10px;
+                font-size: 0.9em;
+            }
+            .live-radar, .algorithm-signals {
+                border-top: none;
+                padding-top: 0;
+                margin-top: 20px;
+                text-align: center;
+            }
+            .radar-item, .signal-item {
+                justify-content: center;
+            }
+            .signal-item::before {
+                margin-right: 5px;
+            }
+            .main-content {
+                margin-left: 0;
+                max-width: 100%;
+                padding: 20px;
+            }
+            .executive-summary h1 {
+                font-size: 2em;
+            }
+            .section-header .section-number {
+                font-size: 2em;
+            }
+            .section-header h2 {
+                font-size: 1.5em;
+            }
+            .metric-card {
+                max-width: 100%;
+            }
+            .hook-creator-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 15px;
+            }
+            .section-header .section-number {
+                font-size: 1.8em;
+                margin-right: 10px;
+            }
+            .section-header h2 {
+                font-size: 1.3em;
+            }
+            table, .persona-card, .gap-item, .pillar-item, .phase-card, .trend-item, .news-card, .hook-creator-container {
+                padding: 15px;
+            }
+            th, td {
+                padding: 8px 10px;
+                font-size: 0.9em;
+            }
+            .hook-creator-controls select, .hook-creator-controls button {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+        }
+
+        .copy-button {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-button:hover {
+            background-color: var(--navy);
+        }
+
+        .copy-button:active {
+            background-color: var(--navy);
+            transform: translateY(1px);
+        }
+
+        .copy-button.copied {
+            background-color: #28a745; /* Green for copied */
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="https://outlier.ai/logo.png" alt="Outlier Logo">
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#executive-summary"><span class="section-number">01</span> Executive Summary</a></li>
+                <li><a href="#audience-icp"><span class="section-number">02</span> Audience & ICP</a></li>
+                <li><a href="#platform-analysis"><span class="section-number">03</span> Platform Analysis</a></li>
+                <li><a href="#gaps-opportunities"><span class="section-number">04</span> Gaps & Opportunities</a></li>
+                <li><a href="#content-strategy"><span class="section-number">05</span> Content Strategy</a></li>
+                <li><a href="#roadmap-to-1m"><span class="section-number">06</span> Roadmap to 1M</a></li>
+                <li><a href="#trend-intelligence"><span class="section-number">07</span> Trend Intelligence</a></li>
+                <li><a href="#newsjacking-engine"><span class="section-number">08</span> Newsjacking Engine</a></li>
+                <li><a href="#hook-creator"><span class="section-number">09</span> Hook Creator</a></li>
+            </ul>
+        </nav>
+        <div class="live-radar">
+            <h4>Live Trend Radar</h4>
+            <div class="radar-item">
+                <span>AI for Founders</span> <div class="urgency-dot urgency-red"></div>
+            </div>
+            <div class="radar-item">
+                <span>Short-Form Video</span> <div class="urgency-dot urgency-red"></div>
+            </div>
+            <div class="radar-item">
+                <span>Authentic Storytelling</span> <div class="urgency-dot urgency-orange"></div>
+            </div>
+            <div class="radar-item">
+                <span>Community Building</span> <div class="urgency-dot urgency-orange"></div>
+            </div>
+            <div class="radar-item">
+                <span>Personal Branding</span> <div class="urgency-dot urgency-yellow"></div>
+            </div>
+        </div>
+        <div class="algorithm-signals">
+            <h4>Algorithm Signals</h4>
+            <div class="signal-item">Prioritize watch time and completion rates.</div>
+            <div class="signal-item">Reward authentic engagement (comments, shares).</div>
+            <div class="signal-item">Favor original, high-quality content.</div>
+            <div class="signal-item">Boost new formats and features.</div>
+            <div class="signal-item">Emphasize niche authority.</div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <section id="executive-summary">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>Executive Summary: Unlocking Your Next Growth Phase</h2>
+            </div>
+            <h1>Your Blueprint for Dominating the Founder Growth Space</h1>
+            <p>You've built a powerful brand, Dan, rooted in resilience and proven systems. The data, while currently limited on social platforms, points to a massive, untapped opportunity to amplify your message and impact. Your unique narrative—from troubled youth to serial entrepreneur and #1 founder coach—is a potent asset. It's time to leverage that authenticity and strategic insight to build a digital presence that mirrors your real-world influence.</p>
+
+            <h3>Key Metrics (Current)</h3>
+            <div class="key-metrics">
+                <div class="metric-card">
+                    <h3>N/A</h3>
+                    <p>Instagram Followers</p>
+                </div>
+                <div class="metric-card">
+                    <h3>N/A</h3>
+                    <p>Instagram Posts</p>
+                </div>
+                <div class="metric-card">
+                    <h3>danmartell.com</h3>
+                    <p>Primary Digital Hub</p>
+                </div>
+            </div>
+
+            <p>The core diagnosis is clear: while your website is established, your current social media footprint doesn't yet reflect the depth of your expertise or the breadth of your impact. This isn't a deficit; it's a runway. We're looking at a blank canvas with immense potential to onboard founders into your ecosystem, scale your reach, and solidify your position as the indispensable guide for ambitious entrepreneurs. By systematically deploying your proven strategies across digital channels, we'll convert your profound insights into a dominant online presence.</p>
+
+            <h3>Strategic Pillars for Digital Domination</h3>
+            <div class="strategic-pillars">
+                <div class="pillar-card">
+                    <h4>Amplify Your Founder Story</h4>
+                    <p>Your journey from adversity to success is your most compelling differentiator. We'll weave this narrative consistently to build deeper trust and resonance.</p>
+                </div>
+                <div class="pillar-card">
+                    <h4>Systematize Content Production</h4>
+                    <p>Just like scaling a business, scaling content requires systems. We'll implement efficient workflows to ensure consistent, high-value output without sacrificing your time.</p>
+                </div>
+                <div class="pillar-card">
+                    <h4>Dominate Short-Form Video</h4>
+                    <p>This is where attention lives. We'll translate your complex strategies into digestible, impactful short-form content that captures and converts.</p>
+                </div>
+                <div class="pillar-card">
+                    <h4>Strategic Community Engagement</h4>
+                    <p>Beyond broadcasting, we'll foster genuine interactions, turning followers into a loyal community and ultimately, into clients and advocates.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="audience-icp">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>Audience & Ideal Client Profile</h2>
+            </div>
+            <p>Understanding who you're speaking to is foundational. Your message resonates with specific individuals facing distinct challenges. Here are the profiles of your primary and secondary audiences.</p>
+
+            <div class="persona-card">
+                <h3>Persona 1: The Scaling CEO (Primary ICP)</h3>
+                <ul>
+                    <li><strong>Age:</strong> 35-55</li>
+                    <li><strong>Occupation:</strong> Founder, CEO, or President of a B2B SaaS or tech company (often post-seed, pre-Series B).</li>
+                    <li><strong>Pain:</strong> Feeling overwhelmed, trapped by their own success, struggling to delegate effectively, hitting growth plateaus, sacrificing personal life for business, seeking proven systems for scale, battling imposter syndrome despite achievements.</li>
+                    <li><strong>Desire:</strong> To scale their business to 8-figures and beyond, reclaim personal time, build a high-performing leadership team, achieve financial freedom, and create a lasting legacy without burning out.</li>
+                    <li><strong>Trigger:</strong> Reading an article about burnout, seeing a competitor scale rapidly, feeling stuck after a funding round, realizing their current systems are failing as the company grows.</li>
+                </ul>
+            </div>
+
+            <div class="persona-card">
+                <h3>Persona 2: The Ambitious Aspiring Founder (Secondary Audience)</h3>
+                <ul>
+                    <li><strong>Age:</strong> 25-35</li>
+                    <li><strong>Occupation:</strong> Senior Manager, VP, or early-stage founder in tech or a related industry.</li>
+                    <li><strong>Pain:</strong> Aspiring to start or scale their first significant venture, lacking a clear roadmap, struggling with productivity, seeking mentorship and proven frameworks, fearful of making costly mistakes.</li>
+                    <li><strong>Desire:</strong> To gain the strategic knowledge and mindset required to launch and scale a successful company, avoid common entrepreneurial pitfalls, and accelerate their path to becoming a successful founder.</li>
+                    <li><strong>Trigger:</strong> Experiencing frustration with corporate limitations, consuming content about successful entrepreneurs, having a strong business idea but no clear path to execution.</li>
+                </ul>
+            </div>
+
+            <h3>Audience Sizing & Potential</h3>
+            <p>While specific follower data is N/A, we can project the potential reach based on the target market.</p>
+            <table class="audience-sizing-table">
+                <thead>
+                    <tr>
+                        <th>Audience Segment</th>
+                        <th>Estimated Size (Global)</th>
+                        <th>Engagement Potential</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Scaling CEOs / Founders</td>
+                        <td>~1.5M+</td>
+                        <td>High (High-value, problem-aware)</td>
+                    </tr>
+                    <tr>
+                        <td>Ambitious Aspiring Founders</td>
+                        <td>~5M+</td>
+                        <td>Medium-High (Education-seeking, future-focused)</td>
+                    </tr>
+                    <tr>
+                        <td>Software/AI Professionals</td>
+                        <td>~20M+</td>
+                        <td>Medium (Industry-aligned, potential for career growth)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="platform-analysis">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>Platform Analysis: Instagram</h2>
+            </div>
+            <div class="platform-audit-note">
+                <p><strong>Note:</strong> Current Instagram data shows N/A followers and posts. This analysis is based on best practices for a brand like Dan Martell's, assuming a fresh start or significant re-engagement on the platform.</p>
+            </div>
+
+            <h3>Instagram Audit: @danmartell</h3>
+            <p>Given the N/A status, our audit focuses on establishing a strategic foundation for growth. Your Instagram should serve as a dynamic, visual extension of your brand, translating your deep insights into engaging, digestible content.</p>
+
+            <h4>Current State (N/A) & Strategic Direction:</h4>
+            <ul>
+                <li><strong>Profile Optimization:</strong> Your bio needs to immediately communicate your unique value proposition: "Coach to #1 Founders & CEOs | Scale Your Business, Buy Back Your Time | From Jail to Multi-Exit Entrepreneur." Include a clear call-to-action link to your website.</li>
+                <li><strong>Content Strategy:</strong> Currently a blank slate. This is an advantage. We'll build a content strategy from the ground up, focusing on short-form video (Reels), carousel posts for deeper dives, and strategic use of Stories for behind-the-scenes and direct engagement.</li>
+                <li><strong>Visual Identity:</strong> Establish a clean, professional, and aspirational aesthetic. Use brand colors (navy, white, accent blue), consistent fonts, and high-quality visuals. This reinforces authority and professionalism.</li>
+                <li><strong>Engagement:</strong> Develop a proactive engagement strategy. Respond to comments, engage with relevant accounts, and use polls/Q&A in Stories to build community from day one.</li>
+            </ul>
+
+            <h3>Content Type Performance (Projected)</h3>
+            <p>Based on your brand and the current social landscape, here's how different content types are expected to perform for you:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Content Type</th>
+                        <th>Projected Reach</th>
+                        <th>Projected Engagement</th>
+                        <th>Strategic Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Reels (Short-form Video)</strong></td>
+                        <td>High</td>
+                        <td>High</td>
+                        <td>Awareness, Virality, Quick Wins, Personality</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Carousel Posts</strong></td>
+                        <td>Medium-High</td>
+                        <td>Medium-High</td>
+                        <td>Education, Deeper Dives, System Breakdowns, Lead Gen</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Static Image Posts (Quotes, Tips)</strong></td>
+                        <td>Medium</td>
+                        <td>Medium</td>
+                        <td>Brand Reinforcement, Shareability, Quick Value</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stories</strong></td>
+                        <td>Medium</td>
+                        <td>High (Direct)</td>
+                        <td>Authenticity, BTS, Q&A, Polls, Community Building</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Live Streams/IGTV (Long-form)</strong></td>
+                        <td>Low-Medium</td>
+                        <td>Medium (Dedicated)</td>
+                        <td>Deep Engagement, Q&A, Workshops, Authority</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="gaps-opportunities">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Gaps & Opportunities: Building Your Digital Foundation</h2>
+            </div>
+            <p>With a clean slate on Instagram, we're not identifying "gaps" in existing performance, but rather critical foundational elements that, if not addressed, represent missed opportunities to establish a dominant presence. Each missing piece costs you reach, influence, and ultimately, client acquisition.</p>
+
+            <ul class="gaps-list">
+                <li class="gap-item">
+                    <h4>Lack of Consistent Short-Form Video Strategy <span class="urgency-tag red">RED</span></h4>
+                    <p><strong>What it costs:</strong> Missing out on the primary driver of organic reach and discovery on Instagram. Your insights, delivered concisely, are perfect for Reels. Without this, you're invisible to a vast segment of your target audience.</p>
+                    <p><strong>Exact Fix:</strong> Develop a 3-5x weekly Reels strategy. Repurpose existing long-form content into bite-sized clips, create original "hook-value-CTA" videos, and share personal insights. Focus on trending audio and relatable founder pain points.</p>
+                </li>
+                <li class="gap-item">
+                    <h4>Under-Leveraged Founder Story & Personal Brand <span class="urgency-tag orange">ORANGE</span></h4>
+                    <p><strong>What it costs:</strong> Your unique journey is a powerful differentiator. Not sharing it consistently means you're just another coach, rather than the resilient, transformative guide you are. This impacts connection and trust.</p>
+                    <p><strong>Exact Fix:</strong> Integrate your founder story into content pillars. Create "Storytime" Reels, carousel posts detailing lessons learned, and use personal anecdotes to illustrate strategic points. Show, don't just tell, your journey.</p>
+                </li>
+                <li class="gap-item">
+                    <h4>Absence of a Clear Content System <span class="urgency-tag red">RED</span></h4>
+                    <p><strong>What it costs:</strong> Inconsistent posting, burnout, and a lack of clear direction. Without a system, social media becomes a chore rather than a strategic growth engine.</p>
+                    <p><strong>Exact Fix:</strong> Implement a content batching and scheduling system. Dedicate specific time blocks for content creation, leverage AI tools for idea generation and drafting, and use a content calendar for consistent execution. Treat content like a product pipeline.</p>
+                </li>
+                <li class="gap-item">
+                    <h4>Limited Direct Audience Engagement <span class="urgency-tag orange">ORANGE</span></h4>
+                    <p><strong>What it costs:</strong> Social media is a two-way street. Without active engagement, you're broadcasting, not building a community. This limits loyalty, feedback, and conversion opportunities.</p>
+                    <p><strong>Exact Fix:</strong> Allocate daily time for responding to comments and DMs. Use Instagram Stories for interactive elements (polls, Q&A, quizzes). Actively engage with comments on your posts and relevant industry accounts. Ask questions in your captions to spark conversation.</p>
+                </li>
+                <li class="gap-item">
+                    <h4>Lack of Clear Call-to-Actions (CTAs) <span class="urgency-tag yellow">YELLOW</span></h4>
+                    <p><strong>What it costs:</strong> Even with great content, if you don't tell people what to do next, they won't. This means missed opportunities to drive traffic to your website, lead magnets, or courses.</p>
+                    <p><strong>Exact Fix:</strong> Every piece of content should have a clear, single CTA. Direct users to your link in bio, a specific resource, or to comment with a keyword. Reinforce your main offering consistently.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="content-strategy">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>Content Strategy: Your Blueprint for Value Delivery</h2>
+            </div>
+            <p>Your content needs to be a consistent, high-value delivery system. We'll focus on pillars that leverage your unique expertise and story, ensuring every piece of content serves a strategic purpose.</p>
+
+            <h3>Your 5 Core Content Pillars:</h3>
+            <div class="content-pillar-grid">
+                <div class="pillar-item">
+                    <h4>1. Scaling Systems & Productivity Hacks</h4>
+                    <p><strong>Description:</strong> Actionable strategies, frameworks, and tools for founders to optimize operations, delegate effectively, and achieve exponential growth. Focus on "buying back time."</p>
+                </div>
+                <div class="pillar-item">
+                    <h4>2. AI for Founders: Strategic Advantage</h4>
+                    <p><strong>Description:</strong> How founders can leverage AI to boost efficiency, innovate, and gain a competitive edge. Not just tools, but strategic application and mindset shifts.</p>
+                </div>
+                <div class="pillar-item">
+                    <h4>3. Founder Mindset & Resilience</h4>
+                    <p><strong>Description:</strong> Addressing the psychological challenges of entrepreneurship: imposter syndrome, burnout, decision fatigue. Share your personal journey and how you overcame mental hurdles.</p>
+                </div>
+                <div class="pillar-item">
+                    <h4>4. Youth Empowerment & Leadership Lessons</h4>
+                    <p><strong>Description:</strong> Drawing parallels from your work with youth, apply leadership principles and the importance of mentorship to the founder journey. Inspire the next generation of entrepreneurs.</p>
+                </div>
+                <div class="pillar-item">
+                    <h4>5. "Behind the Scale" - Real-World Founder Stories</h4>
+                    <p><strong>Description:</strong> Share anonymized case studies or general principles derived from your coaching experiences. Highlight common challenges and breakthroughs of founders you've worked with.</p>
+                </div>
+            </div>
+
+            <h3>Weekly Content Calendar Template:</h3>
+            <p>This template provides a consistent rhythm for content delivery, ensuring you're hitting all key areas.</p>
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Primary Content Type</th>
+                        <th>Content Pillar Focus</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Monday</strong></td>
+                        <td>Reel / Short Video</td>
+                        <td>Scaling Systems / AI for Founders</td>
+                        <td>Quick, actionable tip or AI insight. High impact hook.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tuesday</strong></td>
+                        <td>Carousel Post</td>
+                        <td>Founder Mindset / Leadership</td>
+                        <td>Deeper dive into a mindset shift or leadership principle.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wednesday</strong></td>
+                        <td>Reel / Short Video</td>
+                        <td>Personal Story / Resilience</td>
+                        <td>Share a personal anecdote or lesson from your journey.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thursday</strong></td>
+                        <td>Static Image / Quote</td>
+                        <td>Motivational / Productivity</td>
+                        <td>Inspirational quote or a powerful productivity hack.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Friday</strong></td>
+                        <td>Reel / Short Video</td>
+                        <td>"Behind the Scale" / Q&A</td>
+                        <td>Address a common founder question or share a mini-case study.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Weekend</strong></td>
+                        <td>Stories / Engagement</td>
+                        <td>Authenticity / Community</td>
+                        <td>Behind-the-scenes, polls, Q&A, personal reflections.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Content Mix Recommendations:</h3>
+            <div class="content-mix-recommendations">
+                <ul>
+                    <li><strong>70% Educational / Value-Driven:</strong> Deliver direct, actionable insights and strategies that founders can implement immediately.</li>
+                    <li><strong>20% Personal / Story-Driven:</strong> Share your journey, struggles, and triumphs to build deep connection and relatability. This is your unique differentiator.</li>
+                    <li><strong>10% Promotional / CTA-Driven:</strong> Strategically guide your audience to your website, programs, or lead magnets. Ensure these are always framed as solving a problem for them.</li>
+                    <li><strong>Prioritize Video:</strong> Make short-form video (Reels) your primary growth engine. Repurpose longer content into concise, engaging clips.</li>
+                    <li><strong>Leverage Carousels:</strong> Use multi-slide posts for step-by-step guides, myth-busting, or deeper explanations of complex topics.</li>
+                    <li><strong>Interactive Stories:</strong> Utilize polls, quizzes, and Q&A stickers to foster direct engagement and gather audience insights.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="roadmap-to-1m">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2>Roadmap to 1M: Scaling Your Influence</h2>
+            </div>
+            <p>Achieving 1 million followers isn't about vanity; it's about expanding your impact to a critical mass of founders who need your guidance. This roadmap outlines a phased approach, focusing on strategic growth and consistent value delivery.</p>
+
+            <div class="roadmap-phases">
+                <div class="phase-card">
+                    <h3>Phase 1: Current → 10K Followers</h3>
+                    <h4>Timeline: 0-6 Months</h4>
+                    <ul>
+                        <li><strong>Tactics:</strong>
+                            <ul>
+                                <li><strong>Profile Optimization:</strong> Craft a compelling bio, clear CTA link.</li>
+                                <li><strong>Content System Setup:</strong> Implement batching, scheduling, and repurposing workflows.</li>
+                                <li><strong>Reels Domination:</strong> 3-5 high-value Reels/week, focusing on trending audio and founder pain points.</li>
+                                <li><strong>Foundational Carousels:</strong> 2 educational carousels/week on scaling systems and AI.</li>
+                                <li><strong>Authentic Storytelling:</strong> Integrate personal journey snippets into content.</li>
+                                <li><strong>Proactive Engagement:</strong> Respond to all comments/DMs, engage with 10-15 relevant accounts daily.</li>
+                            </ul>
+                        </li>
+                        <li><strong>KPIs:</strong>
+                            <ul>
+                                <li>Follower Growth: 500-1500/month</li>
+                                <li>Reel Average Views: 5K+</li>
+                                <li>Engagement Rate: 5%+</li>
+                                <li>Website Clicks from Bio: 100+/month</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h3>Phase 2: 10K → 100K Followers</h3>
+                    <h4>Timeline: 6-18 Months</h4>
+                    <ul>
+                        <li><strong>Tactics:</strong>
+                            <ul>
+                                <li><strong>Content Diversification:</strong> Introduce Instagram Lives for Q&A, longer-form educational content.</li>
+                                <li><strong>Audience Research & Refinement:</strong> Deep dive into best-performing content, double down on what resonates.</li>
+                                <li><strong>Strategic Collaborations:</strong> Partner with aligned founders, industry experts, or podcasts for cross-promotion.</li>
+                                <li><strong>Community Building:</strong> Launch a dedicated "Founder Forum" within Instagram (e.g., Broadcast Channel) or drive to an external community.</li>
+                                <li><strong>Paid Promotion:</strong> Experiment with targeted Instagram Ads to amplify top-performing content and attract specific ICPs.</li>
+                                <li><strong>Repurpose & Distribute:</strong> Ensure content created for Instagram is repurposed across other platforms (LinkedIn, YouTube Shorts).</li>
+                            </ul>
+                        </li>
+                        <li><strong>KPIs:</strong>
+                            <ul>
+                                <li>Follower Growth: 5K-15K/month</li>
+                                <li>Reel Average Views: 20K+</li>
+                                <li>Engagement Rate: 3-4% (natural drop with scale)</li>
+                                <li>Lead Magnet Downloads: 500+/month</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h3>Phase 3: 100K → 1M Followers</h3>
+                    <h4>Timeline: 18-36+ Months</h4>
+                    <ul>
+                        <li><strong>Tactics:</strong>
+                            <ul>
+                                <li><strong>Thought Leadership Amplification:</strong> Position yourself as the definitive voice in founder scaling and AI.</li>
+                                <li><strong>Scalable Content Production:</strong> Build a dedicated content team to maintain high volume and quality.</li>
+                                <li><strong>Strategic Partnerships & Media:</strong> Pursue larger media opportunities, speaking engagements, and brand partnerships.</li>
+                                <li><strong>Global Expansion:</strong> Tailor content for international founder communities.</li>
+                                <li><strong>Advanced Analytics:</strong> Leverage sophisticated tools to understand audience behavior and content performance at a granular level.</li>
+                                <li><strong>Evergreen Content Strategy:</strong> Create timeless resources that continue to attract new followers over time.</li>
+                            </ul>
+                        </li>
+                        <li><strong>KPIs:</strong>
+                            <ul>
+                                <li>Follower Growth: 25K-50K+/month</li>
+                                <li>Reel Average Views: 100K+ (with viral hits)</li>
+                                <li>Engagement Rate: 2-3%</li>
+                                <li>Program Enrollments/Consultations: Significant increase.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="trend-intelligence">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2>Trend Intelligence: Staying Ahead of the Curve</h2>
+            </div>
+            <p>The digital landscape evolves rapidly. To maintain relevance and maximize reach, you need to be aware of and strategically leverage emerging trends. Here are the key trends impacting your space and how to act on them.</p>
+
+            <ul class="trend-list">
+                <li class="trend-item">
+                    <h4>Hyper-Personalized AI Content <span class="urgency-tag red">RED</span></h4>
+                    <p><strong>Description:</strong> AI isn't just for business operations; it's revolutionizing content creation and consumption. Tailoring content to individual user preferences and learning styles will become paramount.</p>
+                    <p><strong>Algorithm Signals:</strong> Increased time on site/app, repeat visits, direct engagement with personalized prompts.</p>
+                    <p class="action-items"><strong>Action Items:</strong>
+                        <ul>
+                            <li>Use AI tools to analyze audience data and identify micro-segments for targeted content.</li>
+                            <li>Experiment with interactive AI-driven content (e.g., "Ask my AI coach" features).</li>
+                            <li>Create content on how founders can use AI for personalized customer experiences.</li>
+                        </ul>
+                    </p>
+                </li>
+                <li class="trend-item">
+                    <h4>Authenticity & Raw Storytelling <span class="urgency-tag orange">ORANGE</span></h4>
+                    <p><strong>Description:</strong> Audiences crave realness. Polished perfection is out; vulnerability, behind-the-scenes glimpses, and unscripted moments build deeper trust.</p>
+                    <p><strong>Algorithm Signals:</strong> High share rates, save rates, genuine comments, longer watch times on less "produced" content.</p>
+                    <p class="action-items"><strong>Action Items:</strong>
+                        <ul>
+                            <li>Share more of your personal journey, struggles, and lessons learned in raw, unedited formats (Stories, Reels).</li>
+                            <li>Show the "messy middle" of entrepreneurship, not just the highlights.</li>
+                            <li>Encourage user-generated content from your community sharing their own founder struggles and wins.</li>
+                        </ul>
+                    </p>
+                </li>
+                <li class="trend-item">
+                    <h4>Micro-Communities & Niche Engagement <span class="urgency-tag orange">ORANGE</span></h4>
+                    <p><strong>Description:</strong> While broad reach is good, deep engagement within smaller, highly-aligned communities drives true loyalty and conversion. Think broadcast channels, private groups, and focused discussions.</p>
+                    <p><strong>Algorithm Signals:</strong> Direct messages, group activity, high engagement within specific content series.</p>
+                    <p class="action-items"><strong>Action Items:</strong>
+                        <ul>
+                            <li>Launch an Instagram Broadcast Channel for your closest followers, offering exclusive insights.</li>
+                            <li>Host regular Q&A sessions on specific niche topics relevant to founders (e.g., "AI for Sales Teams").</li>
+                            <li>Drive engagement to your existing communities (e.g., Facebook groups, Slack channels).</li>
+                        </ul>
+                    </p>
+                </li>
+                <li class="trend-item">
+                    <h4>Interactive & Experiential Content <span class="urgency-tag yellow">YELLOW</span></h4>
+                    <p><strong>Description:</strong> Moving beyond passive consumption, content that allows users to participate, learn by doing, or experience something directly captures attention and educates effectively.</p>
+                    <p><strong>Algorithm Signals:</strong> High interaction rates (polls, quizzes), longer session durations, repeat engagement with interactive elements.</p>
+                    <p class="action-items"><strong>Action Items:</strong>
+                        <ul>
+                            <li>Utilize Instagram's interactive stickers (polls, quizzes, sliders) in Stories and Reels.</li>
+                            <li>Create "choose your own adventure" style carousels for problem-solving scenarios.</li>
+                            <li>Develop short, interactive workshops or challenges that can be delivered via social media.</li>
+                        </ul>
+                    </p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="newsjacking-engine">
+            <div class="section-header">
+                <span class="section-number">08</span>
+                <h2>Newsjacking Engine: Timely Insights, Maximum Impact</h2>
+            </div>
+            <p>Newsjacking allows you to tap into existing conversations, providing timely, relevant insights that position you as a thought leader. Here are 5 opportunities with ready-to-post hooks, crafted in your voice.</p>
+
+            <div class="newsjacking-opportunities">
+                <div class="news-card">
+                    <h4>Trend: Latest AI Breakthrough (e.g., new GPT model, major AI funding round)</h4>
+                    <p>"Another week, another AI breakthrough. But for founders, the real question isn't 'what's new,' it's 'how do I integrate this to buy back time and scale faster?' Most are missing the strategic angle."</p>
+                    <button class="copy-button">Copy Hook</button>
+                </div>
+                <div class="news-card">
+                    <h4>Trend: High-Profile Tech Layoffs / Economic Uncertainty</h4>
+                    <p>"Layoffs are tough, but they're also a stark reminder: resilience isn't just a buzzword. It's the core of founder success. How are you building a business that thrives, not just survives, through any market?"</p>
+                    <button class="copy-button">Copy Hook</button>
+                </div>
+                <div class="news-card">
+                    <h4>Trend: New Study on Founder Burnout / Mental Health</h4>
+                    <p>"Another study confirms it: founder burnout is real. But it's not inevitable. You can scale your business without sacrificing your freedom. It starts with systems, not just hustle."</p>
+                    <button class="copy-button">Copy Hook</button>
+                </div>
+                <div class="news-card">
+                    <h4>Trend: Major Acquisition or IPO of a SaaS Company</h4>
+                    <p>"That recent acquisition? It wasn't luck. It was built on clear systems, strategic delegation, and a relentless focus on value. What's your exit strategy, and how are you building for it today?"</p>
+                    <button class="copy-button">Copy Hook</button>
+                </div>
+                <div class="news-card">
+                    <h4>Trend: Debate on Remote Work vs. Office Return</h4>
+                    <p>"The remote vs. office debate misses the point for founders. It's not about location; it's about productivity, culture, and building a team that scales. Are your systems location-agnostic?"</p>
+                    <button class="copy-button">Copy Hook</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="hook-creator">
+            <div class="section-header">
+                <span class="section-number">09</span>
+                <h2>Hook Creator: Grab Attention, Deliver Value</h2>
+            </div>
+            <p>A great hook stops the scroll. Use this tool to generate compelling opening lines for your content, ensuring you immediately capture your audience's attention and lead them into your valuable insights.</p>
+
+            <div class="hook-creator-container">
+                <div class="hook-creator-controls">
+                    <div>
+                        <label for="topicSelect">Select Topic:</label>
+                        <select id="topicSelect">
+                            <option value="Scaling & Productivity">Scaling & Productivity</option>
+                            <option value="AI for Founders">AI for Founders</option>
+                            <option value="Founder Mindset">Founder Mindset</option>
+                            <option value="Youth & Leadership">Youth & Leadership</option>
+                            <option value="Personal Journey">Personal Journey</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="hookTypeSelect">Select Hook Type:</label>
+                        <select id="hookTypeSelect">
+                            <option value="Curiosity Gap">Curiosity Gap</option>
+                            <option value="Problem Amplification">Problem Amplification</option>
+                            <option value="Authority Challenge">Authority Challenge</option>
+                            <option value="Transformation">Transformation</option>
+                            <option value="POV">POV</option>
+                            <option value="Number Hook">Number Hook</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button id="generateHookBtn">Generate Hook</button>
+                    </div>
+                </div>
+
+                <div id="generatedHookDisplay">
+                    <span>Select a topic and hook type, then click 'Generate Hook'.</span>
+                    <button class="copy-button" style="display: none;">Copy</button>
+                </div>
+
+                <h3>Pre-Loaded Hooks:</h3>
+                <div class="hook-grid" id="preloadedHooksGrid">
+                    <!-- Pre-loaded hooks will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scroll for sidebar navigation
+        document.querySelectorAll('.sidebar-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Update active state
+                document.querySelectorAll('.sidebar-nav a').forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Set initial active state for sidebar
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5 // Adjust as needed
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${entry.target.id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initialize first section as active on load
+        if (navLinks.length > 0) {
+            navLinks[0].classList.add('active');
+        }
+
+
+        // Hook Generator Logic
+        const hooks = {
+            "Scaling & Productivity": {
+                "Curiosity Gap": [
+                    "Most founders chase growth, but few understand the real secret to buying back their time. It's not what you think.",
+                    "You're working harder, but are you scaling smarter? There's a hidden bottleneck crushing your productivity.",
+                    "What if I told you the key to 10x growth isn't more hours, but a single system shift?",
+                    "Every founder talks about scale, but what exactly are they missing that keeps them stuck?",
+                    "The top 1% of founders don't just work hard; they've mastered this one productivity hack. Are you using it?",
+                    "Why do some businesses explode while others stagnate? It comes down to a framework you're likely overlooking.",
+                    "Think you've tried every productivity tool? You're probably missing the one that actually changes everything.",
+                    "The biggest myth about scaling? That it requires sacrificing your personal life. Here's the truth.",
+                    "What if you could achieve more in 4 hours than most do in 8? It's not magic, it's a method.",
+                    "You're an expert in your field, but are you an expert in scaling your time? Most founders aren't."
+                ],
+                "Problem Amplification": [
+                    "Feeling trapped by your own success? That's the cost of growth without proper systems.",
+                    "Your business is growing, but your time is shrinking. That's not scale, that's a trap.",
+                    "Hitting a growth plateau? It's not your market, it's your systems. They're failing you.",
+                    "Delegation feels impossible, and you're still doing tasks a junior could handle. This is why you're stuck.",
+                    "Burnout isn't a badge of honor; it's a symptom of a broken scaling strategy.",
+                    "You've built a great product, but your operational chaos is killing your profit margins. Sound familiar?",
+                    "The 'hustle culture' is lying to you. It's leading to exhaustion, not exponential growth.",
+                    "Are you constantly putting out fires instead of building a future? Your business controls you, not the other way around.",
+                    "Your team is busy, but are they productive? The difference is costing you millions.",
+                    "You started your business for freedom, but now it owns you. Let's fix that."
+                ],
+                "Authority Challenge": [
+                    "Everyone says 'work hard,' but I say 'work smart with proven systems.' The difference is freedom.",
+                    "Forget the gurus telling you to 'just grind.' Real scale comes from strategic leverage, not endless hours.",
+                    "They tell you to delegate, but don't show you how to build the systems that make it possible. I do.",
+                    "You've heard 'time is money,' but I'll show you how to buy back your time and make more money.",
+                    "Most advice on productivity is flawed because it ignores the founder's unique challenges. I don't.",
+                    "They preach 'growth at all costs,' but I teach 'growth with freedom.' Which do you choose?",
+                    "You don't need more motivation; you need better systems. I've built and exited three companies using them.",
+                    "Stop chasing every new tactic. I'll show you the timeless strategies that actually scale businesses.",
+                    "Many talk about scaling, but few have actually built and exited multiple companies using the systems they preach.",
+                    "The common wisdom about 'doing it all yourself' is a recipe for disaster. Let's talk real delegation."
+                ],
+                "Transformation": [
+                    "Go from overwhelmed founder to confident CEO, reclaiming your time and doubling your revenue.",
+                    "Imagine scaling your business to 8 figures, not by working more, but by working smarter. That's the transformation.",
+                    "Shift from constant firefighting to strategic leadership, building a business that runs without you.",
+                    "Turn your operational chaos into a predictable, scalable system that buys back your freedom.",
+                    "From feeling stuck and stressed to experiencing exponential growth and personal fulfillment. It's possible.",
+                    "Transform your business from a demanding boss to a well-oiled machine that serves your life, not consumes it.",
+                    "Break free from the 'do-it-all' mentality and build a high-performing team that drives your vision forward.",
+                    "Unlock the secret to scaling your impact without sacrificing your personal life or health.",
+                    "Move beyond the daily grind and become the visionary leader your company needs to reach its full potential.",
+                    "Reclaim your weekends, boost your bottom line, and build a legacy you're truly proud of."
+                ],
+                "POV": [
+                    "As a founder who's built and exited three companies, I've learned that true scale isn't about hustle, it's about systems.",
+                    "My perspective on productivity is simple: if it doesn't buy back your time, it's not truly productive.",
+                    "I believe most founders are one system away from unlocking their next level of growth and freedom.",
+                    "From my experience, the biggest bottleneck to scale isn't the market, it's the founder's own operational approach.",
+                    "I've seen firsthand how implementing the right systems can transform a struggling founder into a thriving CEO.",
+                    "My philosophy is that you can build an empire without sacrificing your personal life. It's a choice.",
+                    "I'm convinced that the future of entrepreneurship belongs to those who master leverage, not just labor.",
+                    "Having been through the burnout cycle, I know the importance of building a business that supports you, not drains you.",
+                    "My take on delegation: it's not about offloading tasks; it's about empowering your team with clear processes.",
+                    "I've always believed that the best entrepreneurs are masters of efficiency, not just innovation."
+                ],
+                "Number Hook": [
+                    "3 systems that helped me scale to 8 figures and buy back 20 hours a week.",
+                    "The #1 mistake founders make when trying to scale past $1M.",
+                    "7 productivity hacks that will give you back 10+ hours in your week.",
+                    "How I built 3 successful companies and exited, all by focusing on these 4 core principles.",
+                    "The 5 critical steps to delegating effectively and multiplying your output by 3x.",
+                    "Only 10% of founders truly master this skill to achieve exponential growth. Are you one of them?",
+                    "2 simple shifts that took my clients from burnout to breakthrough in just 90 days.",
+                    "The 6-step framework for building a business that runs itself, even when you're not there.",
+                    "Why 80% of founders struggle with scaling, and the 20% who don't.",
+                    "From $0 to $10M: The 3 non-negotiable systems every founder needs."
+                ]
+            },
+            "AI for Founders": {
+                "Curiosity Gap": [
+                    "Everyone's talking about AI, but most founders are missing the one strategic advantage it offers for true scale.",
+                    "You're using AI tools, but are you leveraging AI to buy back your most valuable asset: your time? Few are.",
+                    "What if AI could do 80% of your operational heavy lifting? It can, but not how you think.",
+                    "The future of founder productivity isn't just using AI; it's understanding this one core principle.",
+                    "Why are some founders exploding with AI, while others are just dabbling? The difference is strategic application.",
+                    "AI is evolving fast. What's the secret to staying ahead and making it work for your business, not just for tasks?",
+                    "Think AI is just for big tech? You're missing how it can transform your small to medium-sized business today.",
+                    "Most founders are using AI for content, but the real power lies in this overlooked area.",
+                    "What if AI could give you an unfair advantage in your market? It's possible, but you need the right approach.",
+                    "The biggest AI mistake founders make? Not integrating it into their core scaling systems."
+                ],
+                "Problem Amplification": [
+                    "Feeling overwhelmed by AI's rapid pace? If you're not strategically integrating it, you're falling behind.",
+                    "Your competitors are leveraging AI for efficiency, and you're still doing it manually. That's a scaling problem.",
+                    "Spending hours on tasks AI could do in minutes? You're bleeding time and money.",
+                    "AI promises productivity, but for many founders, it's just another distraction. Let's fix that.",
+                    "Your team is resistant to AI, or worse, misusing it. This is a leadership and systems failure.",
+                    "The fear of AI replacing jobs is real, but the bigger fear should be your business becoming obsolete without it.",
+                    "Are you just playing with AI tools, or are you building an AI-powered business? The difference is critical.",
+                    "You've invested in AI, but you're not seeing the ROI. It's not the tech, it's your strategy.",
+                    "The data is clear: founders not adopting AI strategically will be left behind. Where do you stand?",
+                    "Your operational costs are too high, and your team is stretched thin. AI is the answer, but only with a plan."
+                ],
+                "Authority Challenge": [
+                    "Everyone's an AI expert now, but few can show you how to integrate it into a proven scaling system. I can.",
+                    "Forget the hype. I'll show you the practical, founder-centric AI strategies that actually deliver results.",
+                    "They say AI is complex. I say it's an accessible tool for any founder who knows how to apply it strategically.",
+                    "You don't need a data science degree to leverage AI for your business. You need a founder's mindset, which I teach.",
+                    "Most AI advice is for developers, not decision-makers. My focus is on how founders get an unfair advantage.",
+                    "Stop listening to general AI advice. I'll show you how to use AI to specifically buy back your time and scale.",
+                    "They talk about AI's potential; I talk about AI's proven impact on my clients' bottom lines.",
+                    "You've heard the buzzwords. I'll cut through them and give you the actionable AI blueprint for your business.",
+                    "Many are scared of AI. I'm excited by its potential to empower founders like never before.",
+                    "The real AI revolution isn't in the tech itself, but in how founders strategically apply it. That's my expertise."
+                ],
+                "Transformation": [
+                    "Transform your business into an AI-powered growth engine, freeing up your time and multiplying your output.",
+                    "Go from AI-curious to AI-master, leveraging technology to scale your company beyond your wildest dreams.",
+                    "Unlock a new level of productivity and innovation by strategically integrating AI into every facet of your business.",
+                    "Shift from manual bottlenecks to automated efficiency, using AI to reclaim your freedom as a founder.",
+                    "Become an AI-savvy leader, guiding your team to leverage technology for competitive advantage and rapid growth.",
+                    "Turn your AI investments into tangible ROI, seeing real gains in efficiency, revenue, and time saved.",
+                    "Imagine a business where AI handles the repetitive, allowing you to focus on vision and strategy. That's the future.",
+                    "From struggling with AI adoption to seamlessly integrating it for exponential business growth.",
+                    "Elevate your decision-making and operational speed by harnessing the power of artificial intelligence.",
+                    "Reclaim hours in your week and boost your bottom line by strategically deploying AI systems."
+                ],
+                "POV": [
+                    "My view on AI for founders is clear: it's not just a tool, it's a strategic partner for scaling and efficiency.",
+                    "I believe AI is the single biggest opportunity for founders today to buy back time and accelerate growth.",
+                    "From my perspective, the founders who embrace AI strategically will be the ones who dominate their markets.",
+                    "I've seen how AI, when applied correctly, can turn a struggling business into a lean, mean, scaling machine.",
+                    "My philosophy is that every founder needs an AI strategy, not just an AI tool stack.",
+                    "I'm convinced that AI isn't here to replace founders, but to empower them to be more effective leaders.",
+                    "Having experimented with countless AI applications, I know what works and what's a distraction for founders.",
+                    "My take: AI should serve your scaling goals, not complicate them. Simplicity and impact are key.",
+                    "I believe the biggest competitive edge in the next decade will be AI fluency for founders.",
+                    "I've always advocated for leveraging technology to gain freedom, and AI is the ultimate expression of that."
+                ],
+                "Number Hook": [
+                    "3 AI tools every founder needs to 10x their productivity this year.",
+                    "The #1 AI mistake founders make that costs them thousands.",
+                    "7 ways AI can help you buy back 15+ hours in your week, starting today.",
+                    "How I use AI to generate 5x more content and scale my message faster.",
+                    "The 4 critical steps to building an AI strategy that actually works for your business.",
+                    "Only 5% of founders are using AI for this specific growth hack. Are you?",
+                    "2 AI-powered shifts that took my clients from stagnant to soaring in 6 months.",
+                    "The 6 AI applications that will transform your operations and free up your time.",
+                    "Why 90% of founders fail to leverage AI effectively, and the 10% who succeed.",
+                    "From manual chaos to AI efficiency: The 3 non-negotiable integrations."
+                ]
+            },
+            "Founder Mindset": {
+                "Curiosity Gap": [
+                    "You've got the strategy, but what's the hidden mindset block holding you back from true scale?",
+                    "Every founder faces imposter syndrome, but the most successful ones handle it differently. How?",
+                    "What if the biggest barrier to your growth isn't your market, but your own mental game?",
+                    "The secret to resilience isn't avoiding failure; it's how you recover. Most founders get this wrong.",
+                    "Why do some founders thrive under pressure while others crumble? It's a mindset shift you can learn.",
+                    "Think you're immune to burnout? There's a subtle trap most ambitious founders fall into.",
+                    "What if your biggest strength as a founder is also your biggest weakness? It's a common paradox.",
+                    "You're making decisions daily, but are you making them with a clear, strategic mind? Or are emotions in control?",
+                    "The path from a troubled past to multi-exit entrepreneur wasn't just about strategy; it was about this one mindset shift.",
+                    "Most founders focus on external metrics, but the real key to sustainable success lies within."
+                ],
+                "Problem Amplification": [
+                    "Imposter syndrome is crippling your confidence, making you second-guess every decision. That's a growth killer.",
+                    "You're constantly battling self-doubt, even after major wins. This internal struggle is exhausting.",
+                    "Burnout isn't just physical; it's a mental drain that sabotages your vision and your business.",
+                    "Fear of failure is keeping you from taking the bold risks necessary for exponential growth. Sound familiar?",
+                    "You're an expert, but you feel like a fraud. This mindset is holding your business hostage.",
+                    "The pressure of leadership is isolating, and you feel like you have to carry it all alone. You don't.",
+                    "Decision fatigue is slowing you down, leading to analysis paralysis instead of decisive action.",
+                    "Your past failures are whispering doubts into your ear, preventing you from embracing your future potential.",
+                    "You've achieved so much, but you still feel like something is missing. That's a mindset gap.",
+                    "The 'always on' culture is destroying your mental clarity and strategic thinking. It's time for a change."
+                ],
+                "Authority Challenge": [
+                    "They say 'fake it 'til you make it,' but I say 'master your mindset for authentic leadership.' One builds a legacy, the other burns you out.",
+                    "Forget the motivational platitudes. I'll show you the practical mindset shifts that actually fuel resilience and growth.",
+                    "You don't need to be fearless; you need to manage your fear strategically. Most gurus miss this nuance.",
+                    "They talk about 'grit,' but I'll show you how to cultivate true mental toughness without sacrificing your well-being.",
+                    "Most advice on imposter syndrome just tells you to ignore it. I'll show you how to disarm it and use it as fuel.",
+                    "Stop letting your past define your future. My journey proves that transformation is always possible.",
+                    "Many preach 'positive thinking,' but I emphasize 'strategic thinking' to overcome mental blocks.",
+                    "You're told to 'be confident,' but I'll teach you how to build unshakeable self-belief through proven action.",
+                    "The common narrative is that founders must suffer. I challenge that; you can scale with freedom and joy.",
+                    "They focus on external success. I focus on the internal game that makes external success sustainable."
+                ],
+                "Transformation": [
+                    "Go from battling self-doubt to leading with unshakeable confidence, driving your business to new heights.",
+                    "Transform your relationship with failure, turning setbacks into powerful springboards for future success.",
+                    "Shift from chronic burnout to sustainable energy, fueling your vision without sacrificing your well-being.",
+                    "Break free from imposter syndrome and embrace your true authority as a visionary founder.",
+                    "Develop the mental resilience to navigate any challenge, turning adversity into your greatest advantage.",
+                    "From feeling overwhelmed by decisions to making clear, impactful choices that propel your business forward.",
+                    "Reframe your past struggles into a powerful narrative that inspires and connects, rather than holds you back.",
+                    "Unlock a founder's mindset that thrives under pressure, turning stress into focused, productive energy.",
+                    "Move beyond the fear of judgment and build a business that truly reflects your authentic vision.",
+                    "Cultivate an inner game that matches your external ambition, leading to holistic success and fulfillment."
+                ],
+                "POV": [
+                    "As someone who's faced significant adversity, I know firsthand that mindset is the ultimate differentiator for founders.",
+                    "My perspective is that true resilience isn't about avoiding falls, but mastering the art of getting back up, stronger.",
+                    "I believe imposter syndrome is a sign you're pushing your boundaries, and it can be a powerful motivator.",
+                    "From my experience, the biggest breakthroughs in business often follow a profound personal mindset shift.",
+                    "My philosophy is that you can't scale your business beyond your own mental capacity. Master your mind, master your market.",
+                    "I'm convinced that the journey from a troubled youth to a successful entrepreneur was 80% mindset, 20% strategy.",
+                    "Having navigated intense pressure, I understand the critical importance of mental fortitude for sustained success.",
+                    "My take on founder mindset: it's not about being positive all the time, but being strategically optimistic and adaptable.",
+                    "I've always believed that your biggest asset as a founder isn't your product, but your ability to lead yourself.",
+                    "My view is that true freedom as an entrepreneur comes from mastering your inner game, not just your external systems."
+                ],
+                "Number Hook": [
+                    "3 mindset shifts that took me from jail to multi-exit entrepreneur.",
+                    "The #1 mental block holding founders back from 10x growth.",
+                    "7 strategies to overcome imposter syndrome and lead with authentic confidence.",
+                    "How I built resilience after 3 major failures, and how you can too.",
+                    "The 5 non-negotiable habits for a founder's bulletproof mindset.",
+                    "Only 1% of founders truly master this mental game. Are you in that elite group?",
+                    "2 simple reframes that turn self-doubt into strategic action.",
+                    "The 4 core principles for cultivating mental toughness in high-pressure environments.",
+                    "Why 80% of founders struggle with burnout, and the 20% who don't.",
+                    "From self-sabotage to self-mastery: The 3 critical mindset changes."
+                ]
+            },
+            "Youth & Leadership": {
+                "Curiosity Gap": [
+                    "What if the lessons from empowering at-risk youth are the same ones that build incredible founder leaders?",
+                    "You think leadership is about command, but the next generation of leaders is proving something else entirely. What is it?",
+                    "How do you instill resilience in young minds, and what can founders learn from that approach?",
+                    "The biggest challenge for youth today isn't opportunity, it's this one overlooked skill. And founders need it too.",
+                    "Why are some young people able to overcome immense adversity and thrive? It's a lesson for every entrepreneur.",
+                    "What if the key to building a high-performing team lies in the principles of youth mentorship?",
+                    "Think you know what truly motivates the next generation of talent? You might be surprised.",
+                    "The future of leadership isn't just about vision; it's about this often-ignored quality.",
+                    "How do you turn potential into powerful action, whether in a young person or a budding entrepreneur?",
+                    "Most leadership advice focuses on the top. But the real power starts with empowering the base. How?"
+                ],
+                "Problem Amplification": [
+                    "The next generation is disengaged, and your leadership style might be part of the problem. Are you connecting?",
+                    "Your team lacks initiative, and you're constantly micromanaging. This isn't sustainable leadership.",
+                    "Young talent is leaving your company. It's not just about salary; it's a failure of inspiring leadership.",
+                    "You're struggling to find and retain future leaders. The pipeline is dry because your approach is outdated.",
+                    "The gap between generations in the workplace is wider than ever. Are you bridging it, or widening it?",
+                    "Mentorship programs fail because they miss the core psychological triggers that empower growth.",
+                    "Your leadership isn't inspiring, and your team is just going through the motions. That's a culture killer.",
+                    "The challenges facing youth today—mental health, uncertainty—are mirrored in the founder journey. Are you addressing them?",
+                    "You want to build a legacy, but are you investing in the leaders who will carry it forward?",
+                    "Your leadership development is generic, and your future leaders aren't emerging. It's time for a tailored approach."
+                ],
+                "Authority Challenge": [
+                    "They say leadership is learned in boardrooms, but I've seen it forged in far tougher environments. That's where real lessons are.",
+                    "Forget the traditional leadership models. I'll show you how empowering youth reveals the true essence of impact.",
+                    "You don't need a fancy degree to be a leader; you need empathy, resilience, and a system for growth. I teach that.",
+                    "Most leadership training misses the human element. My experience with youth taught me that's everything.",
+                    "They talk about 'managing talent,' but I talk about 'igniting potential.' The difference is profound.",
+                    "Stop focusing on control. I'll show you how to lead by inspiring, a lesson learned from the most challenging youth.",
+                    "Many leaders struggle to connect with younger generations. I'll show you how to build bridges, not walls.",
+                    "The common wisdom about 'tough love' in leadership is often just 'tough.' I advocate for strategic empowerment.",
+                    "You're told to lead from the front. I'll show you how leading from a place of service creates true loyalty.",
+                    "They talk about 'succession planning.' I talk about 'legacy building' through empowering the next wave of leaders."
+                ],
+                "Transformation": [
+                    "Transform your leadership style, inspiring your team and empowering the next generation of innovators.",
+                    "Go from struggling to connect with young talent to becoming a mentor who ignites their full potential.",
+                    "Unlock the secrets to building a resilient, high-performing team by applying principles learned from youth empowerment.",
+                    "Shift from a hierarchical leader to a transformative guide, fostering growth and ownership in your organization.",
+                    "Become the kind of leader who not only scales businesses but also shapes the future through mentorship.",
+                    "Imagine a team where every member feels empowered, resilient, and driven by a shared vision. That's achievable.",
+                    "Turn disengagement into dedication, cultivating a culture where young leaders emerge and thrive.",
+                    "From feeling disconnected from younger generations to building bridges of understanding and mutual respect.",
+                    "Elevate your impact beyond your business, becoming a catalyst for positive change in the lives of aspiring leaders.",
+                    "Reclaim your purpose by investing in others, seeing your legacy grow through the success of those you empower."
+                ],
+                "POV": [
+                    "My perspective on leadership was fundamentally shaped by my work with at-risk youth: it's all about belief and systems.",
+                    "I believe true leadership isn't about power, but about empowering others to realize their own potential.",
+                    "From my experience, the same resilience needed to overcome a troubled youth is the same resilience needed to scale a company.",
+                    "My philosophy is that investing in youth leadership isn't just charity; it's building the future of entrepreneurship.",
+                    "I'm convinced that the lessons I learned about human potential in challenging environments are directly applicable to building high-performing teams.",
+                    "Having guided young people through tough times, I know the power of a clear roadmap and unwavering support.",
+                    "My take on leadership: it's not about having all the answers, but about asking the right questions to unlock others' solutions.",
+                    "I've always believed that every individual, regardless of their past, has the potential for greatness if given the right tools and belief.",
+                    "My view is that the best leaders are those who can see potential in others and create the environment for it to flourish.",
+                    "I've seen firsthand how a belief in someone, especially a young person, can spark an obsession with personal growth and achievement."
+                ],
+                "Number Hook": [
+                    "3 leadership lessons I learned from empowering at-risk youth that apply to every founder.",
+                    "The #1 mistake leaders make when trying to motivate young talent.",
+                    "7 ways to foster resilience in your team, inspired by youth development programs.",
+                    "How I turned a troubled past into a mission to empower youth, and what that taught me about leadership.",
+                    "The 5 critical principles for building a leadership pipeline that actually works.",
+                    "Only 10% of leaders truly understand how to ignite the potential in younger generations. Do you?",
+                    "2 simple shifts that transformed my approach to mentorship, both for youth and founders.",
+                    "The 4 core values that build unbreakable teams, learned from guiding young leaders.",
+                    "Why 80% of leadership development fails to inspire, and the 20% that succeeds.",
+                    "From disengaged to dedicated: The 3 non-negotiable strategies for empowering your team."
+                ]
+            },
+            "Personal Journey": {
+                "Curiosity Gap": [
+                    "I was in jail at 17. What happened next changed everything, and it's the core of how I help founders scale.",
+                    "Most people see the success, but few know the dark past that fueled my obsession with building. Want to hear it?",
+                    "What if your biggest setback is actually the foundation for your greatest breakthrough? Mine was.",
+                    "The story of how a prison guard believed in me, and how that one moment unlocked my entrepreneurial journey.",
+                    "Why did I go from a stolen car to building and exiting three software companies? It's a lesson in resilience.",
+                    "Think your past defines you? My journey proves that transformation isn't just possible, it's a choice.",
+                    "What's the real reason I'm so passionate about helping founders buy back their time? It stems from my own burnout.",
+                    "From a troubled youth to a #1 founder coach – the missing piece in that story isn't what you expect.",
+                    "I nearly lost everything to burnout. That experience taught me the ultimate secret to sustainable scale.",
+                    "You know my success, but do you know the doubt, the struggles, the moments I almost gave up? That's the real story."
+                ],
+                "Problem Amplification": [
+                    "My past could have defined me as a failure. Without a radical shift, your past can hold your business back too.",
+                    "I hit rock bottom, then built an empire. If you're feeling stuck, understand that feeling is a catalyst, not a coffin.",
+                    "Burnout nearly cost me everything I built. If you're sacrificing your health for your business, you're on a dangerous path.",
+                    "The pressure of scaling almost broke me. If you're feeling overwhelmed, you're not alone, and there's a way out.",
+                    "I've battled imposter syndrome, even after multiple exits. If you feel like a fraud, that's a common founder struggle.",
+                    "My journey from adversity wasn't easy. If you're facing immense challenges, know that resilience is your superpower.",
+                    "I learned the hard way that success without freedom is just another cage. Are you building a prison or a platform?",
+                    "The doubt that crept in after my first big win was crippling. If you're questioning your own success, this is for you.",
+                    "My early life was chaos. If your business feels chaotic, it's a reflection of deeper issues we can fix.",
+                    "I almost let my past mistakes dictate my future. Don't let yours dictate your business's potential."
+                ],
+                "Authority Challenge": [
+                    "They talk about 'overcoming adversity,' but I've lived it, from a jail cell to multiple exits. That's real insight.",
+                    "Forget the silver spoon stories. My journey proves that true success is forged through resilience, not privilege.",
+                    "You don't need a perfect past to build an incredible future. My life is proof; I'll show you how.",
+                    "Most coaches talk strategy. I talk strategy rooted in profound personal transformation. That's the difference.",
+                    "They say 'learn from your mistakes.' I say, learn from my mistakes so you don't have to make them yourself.",
+                    "Stop letting your past define your potential. I've been there, and I built a better future. You can too.",
+                    "Many preach about 'grit,' but I've experienced the kind of grit that transforms a life. Let me share how.",
+                    "The common narrative is that you need to hide your past. I say leverage it for authenticity and connection.",
+                    "You're told to be flawless. I'll show you how my flaws and failures became my greatest strengths.",
+                    "They talk about 'starting from scratch.' I talk about starting from negative, and building from there."
+                ],
+                "Transformation": [
+                    "Go from feeling defined by your past to leveraging your story as your most powerful asset for success.",
+                    "Transform your struggles into your strengths, building a business and life of profound impact and freedom.",
+                    "Shift from a place of doubt and burnout to a state of sustained growth, resilience, and personal fulfillment.",
+                    "Break free from the chains of past mistakes and build a future that truly reflects your highest potential.",
+                    "Imagine turning your most challenging experiences into the fuel for your entrepreneurial empire. It's possible.",
+                    "From a troubled youth to a #1 founder coach, my journey shows you how to rewrite your own narrative.",
+                    "Unlock the resilience within you, transforming setbacks into stepping stones for unprecedented growth.",
+                    "Reclaim your power by understanding how your unique journey is your greatest competitive advantage.",
+                    "Move beyond imposter syndrome by embracing your authentic story, inspiring others along the way.",
+                    "Cultivate a mindset that sees every challenge as an opportunity for profound personal and business transformation."
+                ],
+                "POV": [
+                    "My perspective is that my past isn't a secret to hide; it's the foundation of my empathy and understanding for founders.",
+                    "I believe my journey from adversity gives me a unique lens through which to coach founders on resilience and scale.",
+                    "From my experience, the biggest lessons in business often come from the deepest personal struggles.",
+                    "My philosophy is that true success isn't just about financial gains, but about the freedom and impact you create after overcoming your own battles.",
+                    "I'm convinced that my story resonates because it's about real transformation, not just theoretical advice.",
+                    "Having been through the fire, I know the importance of having a mentor who understands the depths of the founder journey.",
+                    "My take on personal story: it's not about vulnerability for vulnerability's sake, but for building genuine connection and trust.",
+                    "I've always believed that your unique path, no matter how winding, is your greatest source of wisdom for others.",
+                    "My view is that every founder has a powerful story, and learning to tell it effectively is a key to influence.",
+                    "I've seen firsthand how sharing my own struggles has empowered others to believe in their own capacity for change."
+                ],
+                "Number Hook": [
+                    "3 pivotal moments that took me from jail at 17 to exiting 3 companies.",
+                    "The #1 lesson I learned from my troubled past that fuels my coaching today.",
+                    "7 ways my personal journey shaped my approach to scaling businesses and buying back time.",
+                    "How I transformed 2 major setbacks into my biggest entrepreneurial breakthroughs.",
+                    "The 5 non-negotiable principles I live by, forged through personal adversity.",
+                    "Only 1% of founders leverage their personal story this way for massive impact. Are you?",
+                    "2 profound experiences that taught me the true meaning of resilience and freedom.",
+                    "The 4 core values that emerged from my past, now guiding my mission to help founders.",
+                    "Why 80% of personal stories fall flat, and the 20% that inspire true action.",
+                    "From rock bottom to top coach: The 3 defining moments of my transformation."
+                ]
+            }
+        };
+
+        const topicSelect = document.getElementById('topicSelect');
+        const hookTypeSelect = document.getElementById('hookTypeSelect');
+        const generateHookBtn = document.getElementById('generateHookBtn');
+        const generatedHookDisplay = document.getElementById('generatedHookDisplay');
+        const generatedHookText = generatedHookDisplay.querySelector('span');
+        const generatedHookCopyBtn = generatedHookDisplay.querySelector('.copy-button');
+        const preloadedHooksGrid = document.getElementById('preloadedHooksGrid');
+
+        function generateHook() {
+            const selectedTopic = topicSelect.value;
+            const selectedHookType = hookTypeSelect.value;
+
+            if (hooks[selectedTopic] && hooks[selectedTopic][selectedHookType]) {
+                const availableHooks = hooks[selectedTopic][selectedHookType];
+                const randomIndex = Math.floor(Math.random() * availableHooks.length);
+                generatedHookText.textContent = availableHooks[randomIndex];
+                generatedHookCopyBtn.style.display = 'inline-block';
+            } else {
+                generatedHookText.textContent = "No hooks found for this combination. Try another!";
+                generatedHookCopyBtn.style.display = 'none';
+            }
+            generatedHookCopyBtn.textContent = 'Copy';
+            generatedHookCopyBtn.classList.remove('copied');
+        }
+
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        generateHookBtn.addEventListener('click', generateHook);
+        generatedHookCopyBtn.addEventListener('click', () => {
+            copyToClipboard(generatedHookText.textContent, generatedHookCopyBtn);
+        });
+
+        // Populate pre-loaded hooks grid
+        function populatePreloadedHooks() {
+            preloadedHooksGrid.innerHTML = '';
+            for (const topic in hooks) {
+                for (const type in hooks[topic]) {
+                    hooks[topic][type].forEach(hook => {
+                        const hookItem = document.createElement('div');
+                        hookItem.classList.add('grid-hook-item');
+                        hookItem.innerHTML = `
+                            <span>${hook}</span>
+                            <button class="copy-button">Copy</button>
+                        `;
+                        hookItem.querySelector('.copy-button').addEventListener('click', (e) => {
+                            copyToClipboard(hook, e.target);
+                        });
+                        preloadedHooksGrid.appendChild(hookItem);
+                    });
+                }
+            }
+        }
+
+        // Initial generation and population
+        generateHook();
+        populatePreloadedHooks();
+
+    </script>
+</body>
+</html>
